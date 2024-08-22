@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Twitter-->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@2b2012b" />
+    <meta name="description" content="3期BiSのフォトギャラリーです。このサイトはVue.jsで作られています。イトー・ムセンシティ部/トギー/ナノ3/ネオ・トゥリーズ)" />
+    <meta property="og:url" content="https://v-bis.github.io/top/" />
+    <meta property="og:title" content="v-BiS" />
+    <meta property="og:description" content="Photo Gallery for BiS" />
+    <meta property="og:image" content="logo.png" />
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="v-BiS" />
+    <meta property="og:description" content="Photo Gallery for BiS" />
+    <meta property="og:url" content="https://v-bis.github.io/top/" />
+    <meta property="og:site_name" content="v-BiS" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/v-bis/top/main/logo.png" />
+    <title>v-BiS</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-scrollto"></script>
+
+<body>
+    <div id="app">
+        <a href="#" v-scroll-to="'#bottom'" class="return-bottom"><i class="fas fa-angle-double-down"></i></a>
+        <a href="#" v-scroll-to="'#top'" class="return-top"><i class="fas fa-angle-double-up"></i></a>
+        <div class="header-background" id="top">
+            <div class="center_for_pc">
+                <div class="top">
+                    <transition appear name="logo">
+                        <a href="https://v-bis.github.io/top/"><img src="https://raw.githubusercontent.com/v-bis/top/main/logo.png"></a>
+                    </transition>
+                    <div class="header-wrapper">
+                        <div class="typing">
+                            Photo Gallery for BiS
+                        </div>
+                    </div>
+                </div>
+                <transition appear name="heading-box">
+                    <div class="heading-box">
+                        <h2>
+                            <span class="gradient-text">
+                                PHOTO<br>GALLERY<br>
+                                for<br>
+                                BiS
+                            </span>
+                        </h2>
+                    </div>
+                </transition>
+            </div>
+            <transition appear name="instagram">
+                <div id="instagram">
+                    <!-- LightWidget WIDGET -->
+                    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe
+                        src="https://cdn.lightwidget.com/widgets/9da1000539845900b3c54d77973f5ef6.html" scrolling="no"
+                        allowtransparency="true" class="lightwidget-widget"
+                        style="width:100%;border:0;overflow:hidden;"></iframe>
+                </div>
+            </transition>
+        </div>
+        <div class="title-container">
+
+            <div class="members">
+                <transition appear name="menu1">
+                    <div class="member bis" v-bind:class="{ active: memberFilter === 'BiS' }"
+                        v-on:click="setMember('BiS')">
+                        BiS</div>
+                </transition>
+                <transition appear name="menu2">
+                    <div class="member ito" v-bind:class="{ active: memberFilter === 'MUSENSiTEEBU' }"
+                        v-on:click="setMember('MUSENSiTEEBU')">&#129429; iTO</div>
+                </transition>
+                <transition appear name="menu3">
+                    <div class="member chamo" v-bind:class="{ active: memberFilter === 'CHANTMONKEE' }"
+                        v-on:click="setMember('CHANTMONKEE')">&#128053; CHANT</div>
+                </transition>
+                <transition appear name="menu4">
+                    <div class="member neo" v-bind:class="{ active: memberFilter === 'NEOTREES' }"
+                        v-on:click="setMember('NEOTREES')">&#127794; NEO</div>
+                </transition>
+                <transition appear name="menu5">
+                    <div class="member toggy" v-bind:class="{ active: memberFilter === 'TOGGY' }"
+                        v-on:click="setMember('TOGGY')">&#128118; TOGGY</div>
+                </transition>
+                <transition appear name="menu6">
+                    <div class="member nano" v-bind:class="{ active: memberFilter === 'NANO3' }"
+                        v-on:click="setMember('NANO3')">&#127799; NANO3</div>
+                </transition>
+                <transition appear name="menu7">
+                    <div class="member hyuga" v-bind:class="{ active: memberFilter === 'HYUGA' }"
+                        v-on:click="setMember('HYUGA')">&#x26a1; HYUGA</div>
+                </transition>
+                <transition appear name="menu8">
+                    <div class="member kure" v-bind:class="{ active: memberFilter === 'KURE' }"
+                        v-on:click="setMember('KURE')">&#x1f49b; KURE</div>
+                </transition>
+                <transition appear name="menu9">
+                    <div class="member shion" v-bind:class="{ active: memberFilter === 'SHiON' }"
+                        v-on:click="setMember('SHiON')">&#x1f004; SHiON</div>
+                </transition>
+                <transition appear name="menu10">
+                    <div class="member mugen" v-bind:class="{ active: memberFilter === 'MUGEN' }"
+                        v-on:click="setMember('MUGEN')">&#x1F408;&#x200D;&#x2B1B; MUGEN</div>
+                </transition>
+            </div>
+        </div>
+        <transition-group class="projects" name="projects">
+            <div class="project" v-if="memberFilter === project.category || memberFilter === 'BiS'"
+                v-bind:key="project.title" v-for="project in reversedProjects">
+                <div class="project-image-wrapper">
+                    <img class="project-image" v-bind:src="project.image">
+                    <div class="gradient-overlay"></div>
+                    <span class="image-text">{{ project.title2 }}</span>
+                </div>
+            </div>
+        </transition-group>
+    </div>
+    <footer id="bottom">
+        <div class="footer-left">
+            <div class="footer-logo"><img src="logo.png"></div>
+            <div class="footer-icon"> &#129429; &#128053; &#127794; &#128118; &#127799;</div>
+        </div>
+        <div class="footer-right">
+            <div class="link">
+                <a target="_blank" href="https://zenn.dev/hatohato/articles/d9a4bdfcab170a"><img width="50"
+                        src="https://github.com/v-bis/top/blob/main/zenn-logo.png?raw=true"></a>
+            </div>
+            <div class="footer-copy">
+                ©2022 v-BiS
+            </div>
+        </div>
+    </footer>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                memberFilter: 'BiS',//初期表示
+                projects: [
+                { title: "", title2: "23.09.18 HMV&BOOKS HAKATA", image: "https://raw.githubusercontent.com/v-bis/top/main/shion15.webp", category: 'SHiON' },
+                { title: "", title2: "23.09.18 HMV&BOOKS HAKATA", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy26.webp", category: 'TOGGY' },
+                { title: "", title2: "23.09.18 HMV&BOOKS HAKATA", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy25.webp", category: 'TOGGY' },
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/mugen2.webp", category: 'MUGEN' }, 
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/kure3.webp", category: 'KURE' }, 
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy24.webp", category: 'TOGGY' },
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/nano25.webp", category: 'NANO3' }, 
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy23.webp", category: 'TOGGY' }, 
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/hyuga6.webp", category: 'HYUGA' },
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy22.webp", category: 'TOGGY' },
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/nano24.webp", category: 'NANO3' },   
+                { title: "", title2: "23.09.17 FUKUOKA DRUM Be-1", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy21.webp", category: 'TOGGY' },    
+                { title: "", title2: "23.07.16 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy18.webp", category: 'TOGGY' },
+                { title: "", title2: "23.07.16 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion14.webp", category: 'SHiON' },
+                { title: "", title2: "23.07.15 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion13.webp", category: 'SHiON' },
+                    { title: "", title2: "23.07.15 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion12.webp", category: 'SHiON' },
+                    { title: "", title2: "23.07.15 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion11.webp", category: 'SHiON' },
+                    { title: "", title2: "23.07.15 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion10.webp", category: 'SHiON' },
+                    { title: "", title2: "23.07.15 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion9.webp", category: 'SHiON' },
+                    { title: "", title2: "23.07.15 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion8.webp", category: 'SHiON' },
+                    { title: "", title2: "23.07.15 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion7.webp", category: 'SHiON' },
+                    { title: "", title2: "23.07.15 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/sion5.webp", category: 'SHiON' },
+                    { title: "", title2: "23.07.14 TOWER RECORD KINSHICHO PARCO", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy17.webp", category: 'TOGGY' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy16.webp", category: 'TOGGY' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/kure2.webp", category: 'KURE' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/nano20.webp", category: 'NANO3' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/kure.webp", category: 'KURE' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy15.webp", category: 'TOGGY' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/sion3.webp", category: 'SHiON' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/nano21.webp", category: 'NANO3' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy14.webp", category: 'TOGGY' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/hyuga5.webp", category: 'HYUGA' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy13.webp", category: 'TOGGY' },
+                    { title: "", title2: "23.05.28 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/mugen.webp", category: 'MUGEN' },
+                    { title: "", title2: "23.05.27 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy12.webp", category: 'TOGGY' },
+                    { title: "", title2: "23.05.27 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/nano19.webp", category: 'NANO3' },
+                    { title: "", title2: "23.05.27 FUKUOKA DRUM SON", image: "https://raw.githubusercontent.com/v-bis/top/main/sion1.webp", category: 'SHiON' },
+                    { title: "", title2: "23.05.26 ESP ENTERTAINMENT FUKUOKA", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS7.webp", category: 'BiS' },
+                    { title: "", title2: "23.05.26 ESP ENTERTAINMENT FUKUOKA", image: "https://raw.githubusercontent.com/v-bis/top/main/nano18.webp", category: 'NANO3' },
+                    { title: "", title2: "23.05.26 ESP ENTERTAINMENT FUKUOKA", image: "https://raw.githubusercontent.com/v-bis/top/main/sion2.webp", category: 'SHiON' },
+                    { title: "", title2: "23.05.26 ESP ENTERTAINMENT FUKUOKA", image: "https://raw.githubusercontent.com/v-bis/top/main/nano17.webp", category: 'NANO3' },
+                    { title: "", title2: "23.03.18 SANUKI ROCK COLOSSEUM", image: "https://raw.githubusercontent.com/v-bis/top/main/nano15.webp", category: 'NANO3' },
+                    { title: "", title2: "23.01.18 SANUKI ROCK COLOSSEUM", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy11.webp", category: 'TOGGY' },
+                    { title: "", title2: "23.01.16 NAGOYA BOTTOM LINE", image: "https://raw.githubusercontent.com/v-bis/top/main/hyuga4.webp", category: 'HYUGA' },
+                    { title: "", title2: "23.01.16 NAGOYA BOTTOM LINE", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy10.webp", category: 'TOGGY' },
+                    { title: "", title2: "23.01.08 日比谷野外音楽堂", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS5.webp", category: 'BiS' },
+                    { title: "", title2: "23.01.08 日比谷野外音楽堂", image: "https://raw.githubusercontent.com/v-bis/top/main/neo10.webp", category: 'NEOTREES' },
+                    { title: "", title2: "23.01.08 日比谷野外音楽堂", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS4.webp", category: 'BiS' },
+                    { title: "", title2: "22.12.17 OSAKA BIG CAT", image: "https://raw.githubusercontent.com/v-bis/top/main/nano14.webp", category: 'NANO3' },
+                    { title: "", title2: "22.12.17 OSAKA BIG CAT", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS3.webp", category: 'BiS' },
+                    { title: "", title2: "22.12.17 OSAKA BIG CAT", image: "https://raw.githubusercontent.com/v-bis/top/main/neo9.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.12.17 OSAKA BIG CAT", image: "https://raw.githubusercontent.com/v-bis/top/main/nano13.webp", category: 'NANO3' },
+                    { title: "", title2: "22.12.17 OSAKA BIG CAT", image: "https://raw.githubusercontent.com/v-bis/top/main/ito6.webp", category: 'MUSENSiTEEBU' },
+                    { title: "", title2: "22.12.17 OSAKA BIG CAT", image: "https://raw.githubusercontent.com/v-bis/top/main/neo8.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.12.17 OSAKA BIG CAT", image: "https://raw.githubusercontent.com/v-bis/top/main/neo7.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.12.04 SHIBUYA TOWER RECORD CUTUP STUDIO", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS2.webp", category: 'BiS' },
+                    { title: "", title2: "22.11.20 KUMAMOTO B.9 V1", image: "https://raw.githubusercontent.com/v-bis/top/main/nano12.webp", category: 'NANO3' },
+                    { title: "", title2: "22.11.20 KUMAMOTO B.9 V1", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy7.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.11.20 KUMAMOTO B.9 V1", image: "https://raw.githubusercontent.com/v-bis/top/main/ito5.webp", category: 'MUSENSiTEEBU' },
+                    { title: "", title2: "22.11.19 KAGOSHIMA SR HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/nano11.webp", category: 'NANO3' },
+                    { title: "", title2: "22.11.05 KANAZAWA AZ", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy9.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.11.05 KANAZAWA AZ", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy8.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.11.05 KANAZAWA AZ", image: "https://raw.githubusercontent.com/v-bis/top/main/neo11.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.11.05 KANAZAWA AZ", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy6.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.11.05 KANAZAWA AZ", image: "https://raw.githubusercontent.com/v-bis/top/main/neo6.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.11.04 KYOTO KBS HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS1.webp", category: 'BiS' },
+                    { title: "", title2: "22.10.29 SHINJUKU MARUI MEN", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy19.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.10.29 SHINJUKU MARUI MEN", image: "https://raw.githubusercontent.com/v-bis/top/main/nano10.webp", category: 'NANO3' },
+                    { title: "", title2: "22.10.29 SHINJUKU MARUI MEN", image: "https://raw.githubusercontent.com/v-bis/top/main/neo12.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.10.29 SHINJUKU MARUI MEN", image: "https://raw.githubusercontent.com/v-bis/top/main/nano9.webp", category: 'NANO3' },
+                    { title: "", title2: "22.10.16 YOKOHAMA BAY HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy5.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.10.16 YOKOHAMA BAY HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/neo5.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.10.16 YOKOHAMA BAY HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy4.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.10.16 YOKOHAMA BAY HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/nano23.webp", category: 'NANO3' },
+                    { title: "", title2: "22.10.16 YOKOHAMA BAY HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/neo14.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.10.16 YOKOHAMA BAY HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/ito4.webp", category: 'MUSENSiTEEBU' },
+                    { title: "", title2: "22.10.16 YOKOHAMA BAY HALL", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy20.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.09.19 TOWER RECORD SAPPORO PARCO", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy3.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.08.07 KAMEIDO CLOCK", image: "https://raw.githubusercontent.com/v-bis/top/main/toggy1.webp", category: 'TOGGY' },
+                    { title: "", title2: "22.07.06 KAWASAKI CLUB CITTA", image: "https://raw.githubusercontent.com/v-bis/top/main/nano7.webp", category: 'NANO3' },
+                    { title: "", title2: "22.07.06 KAWASAKI CLUB CITTA", image: "https://raw.githubusercontent.com/v-bis/top/main/nano6.webp", category: 'NANO3' },
+                    { title: "", title2: "22.06.19 NAGASAKI DRUM Be-7", image: "https://raw.githubusercontent.com/v-bis/top/main/nano5.webp", category: 'NANO3' },
+                    { title: "", title2: "22.06.19 NAGASAKI DRUM Be-7", image: "https://raw.githubusercontent.com/v-bis/top/main/nano3.webp", category: 'NANO3' },
+                    { title: "", title2: "22.06.19 NAGASAKI DRUM Be-7", image: "https://raw.githubusercontent.com/v-bis/top/main/neo2.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.06.19 NAGASAKI DRUM Be-7", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS6.webp", category: 'BiS' },
+                    { title: "", title2: "22.06.19 NAGASAKI DRUM Be-7", image: "https://raw.githubusercontent.com/v-bis/top/main/neo3.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.06.19 NAGASAKI DRUM Be-7", image: "https://raw.githubusercontent.com/v-bis/top/main/mon3.webp", category: 'CHANTMONKEE' },
+                    { title: "", title2: "22.06.05 OKINAWA OUTPUT", image: "https://raw.githubusercontent.com/v-bis/top/main/ito1.webp", category: 'MUSENSiTEEBU' },
+                    { title: "", title2: "22.03.12 MORIOKA CLUB WAVE", image: "https://raw.githubusercontent.com/v-bis/top/main/nano1.webp", category: 'NANO3' },
+                    { title: "", title2: "22.03.12 MORIOKA CLUB WAVE", image: "https://raw.githubusercontent.com/v-bis/top/main/neo1.webp", category: 'NEOTREES' },
+                    { title: "", title2: "22.03.12 MORIOKA CLUB WAVE", image: "https://raw.githubusercontent.com/v-bis/top/main/mon2.webp", category: 'CHANTMONKEE' },
+                    { title: "", title2: "22.01.22 ZEPP NAGOYA", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS14.webp", category: 'BiS' },
+                    { title: "", title2: "22.01.19 ZEPP HANEDA", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS13.webp", category: 'BiS' },
+                    { title: "", title2: "21.12.12 TOKYO Spotify O-EAST", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS12.webp", category: 'BiS' },
+                    { title: "", title2: "21.12.12 TOKYO Spotify O-EAST", image: "https://raw.githubusercontent.com/v-bis/top/main/neo13.webp", category: 'NEOTREES' },
+                    { title: "", title2: "21.11.18 ZEPP TOKYO", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS11.webp", category: 'BiS' },
+                    { title: "", title2: "21.10.23 NAKANO SUNPLAZA", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS10.webp", category: 'BiS' },
+                    { title: "", title2: "21.07.17 KANAZAWA AZ", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS9.webp", category: 'BiS' },
+                    { title: "", title2: "21.07.17 KANAZAWA AZ", image: "https://raw.githubusercontent.com/v-bis/top/main/BiS8.webp", category: 'BiS' },
+                ]
+            },
+            computed: {
+        reversedProjects() {
+            return this.projects.slice().reverse();
+        }
+    },
+            methods: {
+                setMember: function (member) {
+                    this.memberFilter = member;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
