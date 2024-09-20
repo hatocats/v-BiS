@@ -627,6 +627,50 @@ footer .link .fa-github {
   animation: fadeIn 3s ease-in-out forwards;
 }
 
+.project-image-wrapper {
+  cursor: pointer; /* クリック可能なことを示す */
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000; /* モーダルを最前面に表示 */
+  opacity: 0; /* 初期の透明度 */
+  transition: opacity 0.3s ease; /* フェード効果 */
+}
+
+.modal.show {
+  opacity: 1; /* モーダルが表示されるときの透明度 */
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  opacity: 0; /* 初期の透明度 */
+  transition: opacity 0.3s ease; /* フェード効果 */
+}
+
+.modal.show .modal-content {
+  opacity: 1; /* 画像が表示されるときの透明度 */
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
