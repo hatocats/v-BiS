@@ -655,6 +655,7 @@ footer .link .fa-github {
   max-height: 90%;
   opacity: 0; /* 初期の透明度 */
   transition: opacity 0.3s ease; /* フェード効果 */
+  border-radius: 10px;
 }
 
 .modal.show .modal-content {
