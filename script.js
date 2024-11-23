@@ -90,7 +90,6 @@ new Vue({
             { title: "", title2: "22.08.07 KAMEIDO CLOCK", image: "https://raw.githubusercontent.com/GatoUX/v-BiS/main/images/toggy1.webp", category: 'TOGGY' },
             { title: "", title2: "22.07.06 KAWASAKI CLUB CITTA", image: "https://raw.githubusercontent.com/GatoUX/v-BiS/main/images/nano7.webp", category: 'NANO3' },
             { title: "", title2: "22.07.06 KAWASAKI CLUB CITTA", image: "https://raw.githubusercontent.com/GatoUX/v-BiS/main/images/nano6.webp", category: 'NANO3' },
-            { title: "", title2: "22.07.06 KAWASAKI CLUB CITTA", image: "https://raw.githubusercontent.com/GatoUX/v-BiS/main/images/nano4-4.webp", category: 'NANO3' },
             { title: "", title2: "22.07.06 KAWASAKI CLUB CITTA", image: "https://raw.githubusercontent.com/GatoUX/v-BiS/main/images/neo4-4.webp", category: 'NEOTREES' },
             { title: "", title2: "22.07.06 KAWASAKI CLUB CITTA", image: "https://raw.githubusercontent.com/GatoUX/v-BiS/main/images/neo5-5.webp", category: 'NEOTREES' },
             { title: "", title2: "22.07.06 KAWASAKI CLUB CITTA", image: "https://raw.githubusercontent.com/GatoUX/v-BiS/main/images/bis2-2.webp", category: 'BiS' },
